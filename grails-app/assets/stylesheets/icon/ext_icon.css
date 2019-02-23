@@ -1,0 +1,472 @@
+@CHARSET "UTF-8";
+
+.folder_wrenchIcon {
+    margin-left: 2px;
+    height: 22px;
+    background-image: url(ext/folder_wrench.png) !important;
+}
+
+.folder_cameraIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/folder_camera.png) !important;
+}
+
+.folder_userIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/folder_user.png) !important;
+}
+
+.folder_feedIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/folder_feed.png) !important;
+}
+
+.cupIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/cup.png) !important;
+}
+
+.application_homeIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/application_home.png) !important;
+}
+
+.groupIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/group.png) !important;
+}
+
+.commentsIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/comments.png) !important;
+}
+
+.applicationIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/application.png) !important;
+}
+
+.application_doubleIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/application_double.png) !important;
+}
+
+.application_cascadeIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/application_cascade.png) !important;
+}
+
+.tbar_synchronizeIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/tbar_synchronize.png) !important;
+}
+
+.comments_addIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/comments_add.png) !important;
+}
+
+.page_addIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/page_add.png) !important;
+}
+
+.page_edit_1Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/page_edit_1.png) !important;
+}
+
+.page_delIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/page_del.png) !important;
+}
+
+.page_refreshIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/page_refresh.png) !important;
+}
+
+.comment_addIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/comment_add.png) !important;
+}
+
+.acceptIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/accept.png) !important;
+}
+
+.deleteIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/delete.png) !important;
+}
+
+.status_awayIcon {
+    background-image: url(ext/status_away.png) !important;
+}
+
+.status_busyIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/status_busy.png) !important;
+}
+
+.arrow_refreshIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/arrow_refresh.png) !important;
+}
+
+.lockIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/lock.png) !important;
+}
+
+.logoutIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/logout.png) !important;
+}
+
+.wrenchIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/wrench.png) !important;
+}
+
+.book_previousIcon {
+    background-image: url(ext/book_previous.png) !important;
+}
+
+.window_caise_listIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/window_caise_list.png) !important;
+}
+
+.imageIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/image.png) !important;
+}
+
+.application_view_listIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/application_view_list.png) !important;
+}
+
+.keyIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/key.png) !important;
+}
+
+.page_findIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/page_find.png) !important;
+}
+
+.layout_contentIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/layout_content.png) !important;
+}
+
+.chart_organisationIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/chart_organisation.png) !important;
+}
+
+.buildingIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/building.png) !important;
+}
+
+.user_femaleIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/user_female.png) !important;
+}
+
+.status_onlineIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/status_online.png) !important;
+}
+
+.expand-allIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/expand-all.gif) !important;
+}
+
+.collapse-allIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/collapse-all.gif) !important;
+}
+
+.drinkIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/drink.png) !important;
+}
+
+.userIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/user.png) !important;
+}
+
+.group_linkIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/group_link.png) !important;
+}
+
+.award_star_silver_3Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/award_star_silver_3.png) !important;
+}
+
+.medal_silver_3Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/medal_silver_3.png) !important;
+}
+
+.medal_gold_1Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/medal_gold_1.png) !important;
+}
+
+.cancel_48Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/cancel_48.png) !important;
+}
+
+.themeIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/theme.png) !important;
+}
+
+.config2Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/config2.png) !important;
+}
+
+.imIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/im.png) !important;
+}
+
+.theme2Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/theme2.png) !important;
+}
+
+.checkIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/check.png) !important;
+}
+
+.printerIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/printer.png) !important;
+}
+
+.previewIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/preview.png) !important;
+}
+
+.page_excelIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/page_excel.png) !important;
+}
+
+.pluginIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/plugin.png) !important;
+}
+
+.addIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/add.png) !important;
+}
+
+.edit1Icon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/edit1.png) !important;
+}
+
+.disconnectIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/disconnect.png) !important;
+}
+
+.tableIcon {
+    background-image: url(ext/table.png) !important;
+}
+
+.database_connectIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/database_connect.png) !important;
+}
+
+.exclamationIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/exclamation.png) !important;
+}
+
+.bugIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/bug.png) !important;
+}
+
+.configIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/config.png) !important;
+}
+
+.server_connectIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/server_connect.png) !important;
+}
+
+.database_refreshIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/database_refresh.png) !important;
+}
+
+.user_commentIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/user_comment.png) !important;
+}
+
+.imagesIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/images.png) !important;
+}
+
+.docsIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/docs.gif) !important;
+}
+
+.group_addIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/group_add.png) !important;
+}
+
+.message_editIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/message_edit.png) !important;
+}
+
+.uploadIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/upload.png) !important;
+}
+
+.downloadIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/download.png) !important;
+}
+
+.app_boxesIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/app_boxes.png) !important;
+}
+
+.app_leftIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/app_left.png) !important;
+}
+
+.app_rightIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/app_right.png) !important;
+}
+
+.arrow_switchIcon {
+    margin-left: 2px;
+    height: 24px;
+    background-image: url(ext/arrow_switch.png) !important;
+}
+
+.x-btn-default-small .x-btn-inner, .x-btn-default-medium .x-btn-inner, .x-btn-default-large .x-btn-inner, .x-btn-default-toolbar-small .x-btn-inner, .x-btn-default-toolbar-medium .x-btn-inner, .x-btn-default-toolbar-large .x-btn-inner, .x-menu-item-text, .x-html-editor-tb .x-font-, .x-panel-header-default, .x-panel-header-text-default, .x-panel-header-default-framed, .x-tip-header, .x-tip-body, .x-form-invalid-tip-body, .x-tip-header-text, .x-progress-text, .x-toolbar, .x-toolbar .x-form-item-label, .x-toolbar .x-toolbar-text, .x-window-header-text-default, .x-tab-bar, .x-tab button, .x-grid-rowbody, .x-grid-row .x-grid-cell, .x-grid-group-title, .x-grid-row-editor .x-form-field, .x-grid-row-editor .x-form-display-field, .x-form-invalid-under, .x-fieldset-header, .x-column-header, .x-mask-msg div, .x-btn-group-header-text-default-framed, table.x-datepicker-inner a, .x-monthpicker-item, .x-dd-drag-ghost {
+    font-size: 12px;
+}
+
+.x-column-header {
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.x-grid-cell, .x-grid-row, .x-selectable, .x-selectable * {
+    -moz-user-select: -moz-all !important;
+    -khtml-user-select: text ! important;
+    -webkit-user-select: text ! important;
+}
+
+.x-grid-row-summary .x-grid-cell-inner {
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #ffd800;
+}
+
