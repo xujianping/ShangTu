@@ -16,7 +16,7 @@ class RequestMap {
     static constraints = {
         url blank: false, unique: true
         configAttribute blank: false
-        configAttribute size: 0..4000
+        configAttribute size: 0..200
         action nullable: true
     }
 }

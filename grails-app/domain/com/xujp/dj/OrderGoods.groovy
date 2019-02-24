@@ -24,6 +24,7 @@ class OrderGoods {
         goodsCode nullable: true
     }
     static  mapping = {
-        order 'dj_order_goods'
+        table('dj_order_goods')
+
     }
 }

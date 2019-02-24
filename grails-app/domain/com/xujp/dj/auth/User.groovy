@@ -1,5 +1,6 @@
 package com.xujp.dj.auth
 
+import com.xujp.dj.Station
 import grails.plugin.springsecurity.SpringSecurityService
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -14,12 +15,18 @@ class User implements Serializable {
 
 	SpringSecurityService springSecurityService
 
+	/**用户名 */
 	String username
 	String password
-	boolean enabled = true
-	boolean accountExpired
-	boolean accountLocked
-	boolean passwordExpired
+	String realname
+	Station station
+	String email
+	Boolean manager =false
+	Boolean enabled =false
+	Boolean accountExpired = false
+	Boolean accountLocked =false
+	Boolean passwordExpired = false
+	String  phoneColumns
 
 	Set<Role> getAuthorities() {
 		(UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
@@ -42,11 +49,19 @@ class User implements Serializable {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		password nullable: false, blank: false, password: true
-		username nullable: false, blank: false, unique: true
+		username blank: false, unique: true
+		password blank: false
+		email nullable: true
+		manager nullable: true
+		enabled nullable: true
+		station nullable: true
+		manager nullable: true
+		phoneColumns nullable: true
+		phoneColumns size: 0..200
 	}
 
 	static mapping = {
+		table 'dj_user'
 		password column: '`password`'
 	}
 }

@@ -12,12 +12,18 @@ class Role implements Serializable {
 	private static final long serialVersionUID = 1
 
 	String authority
-
-	static constraints = {
-		authority nullable: false, blank: false, unique: true
-	}
-
+	String name
+	String columns
+	String prompts
 	static mapping = {
 		cache true
+		table  'dj_role'
+	}
+
+	static constraints = {
+		authority blank: false, unique: true
+		name  blank: false, unique: true
+		columns nullable: true
+		prompts nullable: true
 	}
 }
