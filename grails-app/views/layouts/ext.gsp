@@ -11,6 +11,7 @@
     <asset:stylesheet src="icon/ext_icon.css"/>
     <asset:javascript src="plugins/extjs/ext-all.js"/>
     <asset:javascript src="ext-lang-zh_CN.js"/>
+    <asset:javascript src="common.js"/>
     <g:layoutHead/>
 </head>
 <body>

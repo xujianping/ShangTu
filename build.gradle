@@ -50,6 +50,11 @@ dependencies {
     compile 'org.grails.plugins:spring-security-core:3.1.2'
     //oracle 驱动
     runtime "com.oracle:ojdbc6:11.2.0.3"
+
+    compile 'org.grails.plugins:excel-import:3.0.0'
+    compile 'org.grails.plugins:excel-export:2.1'
+
+
 }
 
 bootRun {

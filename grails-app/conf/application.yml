@@ -107,7 +107,7 @@ environments:
     development:
         dataSource:
             driverClassName: oracle.jdbc.driver.OracleDriver
-            dbCreate: update
+            dbCreate: none
             url: jdbc:oracle:thin:@127.0.0.1:1521:oradata
             username: SHANGTUDB
             password: SHANGTUDB

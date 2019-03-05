@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="extjs"/>
+    <meta name="layout" content="ext"/>
     <title>Welcome to Grails</title>
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
