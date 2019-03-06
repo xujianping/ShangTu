@@ -54,7 +54,6 @@ dependencies {
     compile 'org.grails.plugins:excel-import:3.0.0'
     compile 'org.grails.plugins:excel-export:2.1'
 
-
 }
 
 bootRun {

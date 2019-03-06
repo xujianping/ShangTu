@@ -25,12 +25,12 @@ class MainController {
         SpringSecurityUtils.principalAuthorities.each {
             actions.addAll RequestMap.findAllByConfigAttributeLike("%${it.authority}%")*.action
         }
-//        def systemParamGroup = SystemParamGroup.findByGroupName("系统设置")
-//        def systemParams = SystemParam?.findAllByGroup(systemParamGroup)
-//        def map = [:]
-//        systemParams?.each { systemParam ->
-//            map."${systemParam.paramCode}" = "${systemParam.paramValue}"
-//        }
+        def systemParamGroup = SystemParamGroup.findByGroupName("系统设置")
+        def systemParams = SystemParam?.findAllByGroup(systemParamGroup)
+        def map = [:]
+        systemParams?.each { systemParam ->
+            map."${systemParam.paramCode}" = "${systemParam.paramValue}"
+        }
 
         def currentStation = user.station
         def stationIds = []
@@ -46,9 +46,9 @@ class MainController {
         if (!session.getValue('stationIds')) {
             session.putValue("stationIds", stationIds)
         }
-//        if (!session.getValue('sysParms')) {
-//            session.putValue("sysParms", map)
-//        }
+        if (!session.getValue('sysParms')) {
+            session.putValue("sysParms", map)
+        }
         render(view: '/main', model: [user: user, actions: actions.sort { [it.sortNum, it.groupName, it.title] }])
     }
 

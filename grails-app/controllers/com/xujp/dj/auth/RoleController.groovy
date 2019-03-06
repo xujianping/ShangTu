@@ -1,12 +1,7 @@
 package com.xujp.dj.auth
 
 import com.util.JSONData
-import com.xujp.dj.auth.Action
-import com.xujp.dj.auth.RequestMap
-import com.xujp.dj.auth.Role
 import grails.converters.JSON
-import pl.touk.excel.export.WebXlsxExporter
-import pl.touk.excel.export.getters.MessageFromPropertyGetter
 
 class RoleController {
         static allowedMethods = [delete: "POST"]
@@ -244,21 +239,6 @@ class RoleController {
             render jsonData as JSON
         }
 
-        /**
-         * 导出
-         */
-        def export = {
-            List<User> users = User.createCriteria().list(params, filter)
-            def headers = ['id', 'actor', 'bookName']
-            def withProperties = ['name', new MessageFromPropertyGetter(messageSource, 'type'), 'price.value']
-
-            new WebXlsxExporter().with {
-                setResponseHeaders(response)
-                fillHeader(headers)
-                add(users, withProperties)
-                save(response.outputStream)
-            }
-        }
 
         /**
          * 查询封装

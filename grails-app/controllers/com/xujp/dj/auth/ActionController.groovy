@@ -7,7 +7,6 @@ import grails.converters.JSON
 
 class ActionController {
         static allowedMethods = [delete: "POST"]
-        def exportService
         def messageSource
         def springSecurityService
 
@@ -165,11 +164,6 @@ class ActionController {
             render jsonData as JSON
         }
 
-        /**
-         * 导出
-         */
-        def export = {
-        }
 
         /**
          * 查询封装

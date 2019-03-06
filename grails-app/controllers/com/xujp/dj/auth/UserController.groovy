@@ -1,17 +1,11 @@
 package com.xujp.dj.auth
 
 import com.util.JSONData
-import com.xujp.dj.auth.Role
-import com.xujp.dj.auth.User
-import com.xujp.dj.auth.UserRole
 import grails.converters.JSON
-import pl.touk.excel.export.WebXlsxExporter
-import pl.touk.excel.export.getters.MessageFromPropertyGetter
 
 class UserController {
     def springSecurityService
     static allowedMethods = [delete: "POST"]
-    def exportService
     def messageSource
 
     def index = {
@@ -180,22 +174,6 @@ class UserController {
 
     }
 
-    /**
-     * 导出
-     */
-    def export = {
-        List<User> users = User.createCriteria().list(params, filter)
-        def headers = ['id', 'actor', 'bookName']
-        def withProperties = ['name', new MessageFromPropertyGetter(messageSource, 'type'), 'price.value']
-
-        new WebXlsxExporter().with {
-            setResponseHeaders(response)
-            fillHeader(headers)
-            add(users, withProperties)
-            save(response.outputStream)
-        }
-
-    }
 
     /**
      * 查询封装

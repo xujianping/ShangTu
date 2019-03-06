@@ -3,17 +3,14 @@
 <title><g:message code="sys.name"/></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="layout" content="ext"/>
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'ext_icon.css')}"/>
-
-<g:javascript src="ext-lang-zh_CN.js"></g:javascript>
-
 <style type="text/css">
 .menubar {
     border-bottom: 1px solid #AACCF6;
     color: #222222;
     cursor: pointer;
     display: block;
-    padding: 4 4 4 20px;
+    padding: 4px 4px 4px 20px !important;
+
 }
 
 .menubar:hover {

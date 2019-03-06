@@ -1,14 +1,13 @@
-package com.xujp.dj.auth
+package com.xujp.dj
 
 import com.util.JSONData
-import com.xujp.dj.auth.RequestMap
 import grails.converters.JSON
 
-class RequestMapController {
+class CompanyController {
     static allowedMethods = [delete: "POST"]
 
     def index = {
-        render(view: "/requestMap/list", params: params)
+        render(view: "/company/list", params: params)
     }
 
     /**
@@ -19,10 +18,8 @@ class RequestMapController {
         params.max = params.limit
 
         def filter = searchCondition(params)
-
-        def data = RequestMap.createCriteria().list(params, filter)
-        def jsonData = new JSONData(data: data, totalCount: RequestMap.createCriteria().count(filter))
-        //println(jsonData as JSON)
+        def data = Company.createCriteria().list(params, filter)
+        def jsonData = new JSONData(data: data, totalCount: Company.createCriteria().count(filter))
         render jsonData as JSON
     }
 
@@ -33,21 +30,21 @@ class RequestMapController {
         def jsonData = [success: true]
         boolean isNew = (params?.id == null || params?.id == "")
         try {
-            def requestMap
+            def company
 
             if (isNew) {
-                requestMap = new RequestMap(params)
+                company = new Company(params)
             } else {
-                requestMap = RequestMap.get(params.id)
-                if (!requestMap) {
+                company = Company.get(params.id)
+                if (!company) {
                     jsonData = [success: false]
                     render jsonData as JSON
                     return
                 }
-                requestMap.properties = params
+                company.properties = params
             }
 
-            if (requestMap.save(flush: true)) {
+            if (company.save(flush: true)) {
                 render jsonData as JSON
                 return
             } else {
@@ -91,11 +88,11 @@ class RequestMapController {
         def jsonData = [success: true]
 
         try {
-            def requestMap = RequestMap.get(params.id)
+            def company = Company.get(params.id)
 
-            if (requestMap) {
+            if (company) {
                 try {
-                    requestMap.delete(flush: true)
+                    company.delete(flush: true)
                     render jsonData as JSON
                     return
                 }
@@ -104,8 +101,7 @@ class RequestMapController {
                     render jsonData as JSON
                     return
                 }
-            }
-            else {
+            } else {
                 jsonData = [success: false, alertMsg: "删除失败,未知错误!"]
                 render jsonData as JSON
                 return
@@ -123,13 +119,13 @@ class RequestMapController {
     def show = {
         def jsonData
         try {
-            def requestMap = RequestMap.get(params.id)
-            if (!requestMap) {
+            def company = Company.get(params.id)
+            if (!company) {
                 jsonData = new JSONData(success: false)
                 render jsonData as JSON
                 return;
             } else {
-                def dataInfo = [success: true, data: requestMap]
+                def dataInfo = [success: true, data: company]
                 render dataInfo as JSON
                 return
             }
@@ -139,7 +135,6 @@ class RequestMapController {
 
         render jsonData as JSON
     }
-
 
     /**
      * 查询封装
@@ -151,7 +146,6 @@ class RequestMapController {
             if (params?.bookName) {
                 ilike("bookName", "")
             }
-
         }
         return filter
     }

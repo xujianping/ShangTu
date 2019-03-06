@@ -1,14 +1,18 @@
-package com.xujp.dj.auth
+package com.xujp.dj
 
 import com.util.JSONData
-import com.xujp.dj.auth.RequestMap
+import com.xujp.dj.Station
 import grails.converters.JSON
 
-class RequestMapController {
+class StationController {
     static allowedMethods = [delete: "POST"]
+    def exportService
 
     def index = {
-        render(view: "/requestMap/list", params: params)
+        render(view: "/station/list", params: params)
+    }
+    def toForm = {
+        render(view: "/station/form", params: params)
     }
 
     /**
@@ -19,10 +23,9 @@ class RequestMapController {
         params.max = params.limit
 
         def filter = searchCondition(params)
-
-        def data = RequestMap.createCriteria().list(params, filter)
-        def jsonData = new JSONData(data: data, totalCount: RequestMap.createCriteria().count(filter))
-        //println(jsonData as JSON)
+        def data = Station.createCriteria().list(params, filter)
+        def jsonData = new JSONData(data: data, totalCount: Station.createCriteria().count(filter))
+        println(jsonData as JSON)
         render jsonData as JSON
     }
 
@@ -33,24 +36,26 @@ class RequestMapController {
         def jsonData = [success: true]
         boolean isNew = (params?.id == null || params?.id == "")
         try {
-            def requestMap
+            def station
 
             if (isNew) {
-                requestMap = new RequestMap(params)
+                station = new Station(params)
             } else {
-                requestMap = RequestMap.get(params.id)
-                if (!requestMap) {
+                station = Station.get(params.id)
+                if (!station) {
                     jsonData = [success: false]
                     render jsonData as JSON
                     return
                 }
-                requestMap.properties = params
+                station.properties = params
             }
-
-            if (requestMap.save(flush: true)) {
+            if (station.save(flush: true)) {
                 render jsonData as JSON
                 return
             } else {
+                station.errors.each {
+                    println(it)
+                }
                 if (isNew) {
                     jsonData = [success: false, alertMsg: '新增信息验证失敗,请重新输入!']
                     render jsonData as JSON
@@ -91,11 +96,11 @@ class RequestMapController {
         def jsonData = [success: true]
 
         try {
-            def requestMap = RequestMap.get(params.id)
+            def station = Station.get(params.id)
 
-            if (requestMap) {
+            if (station) {
                 try {
-                    requestMap.delete(flush: true)
+                    station.delete(flush: true)
                     render jsonData as JSON
                     return
                 }
@@ -104,8 +109,7 @@ class RequestMapController {
                     render jsonData as JSON
                     return
                 }
-            }
-            else {
+            } else {
                 jsonData = [success: false, alertMsg: "删除失败,未知错误!"]
                 render jsonData as JSON
                 return
@@ -123,23 +127,21 @@ class RequestMapController {
     def show = {
         def jsonData
         try {
-            def requestMap = RequestMap.get(params.id)
-            if (!requestMap) {
+            def station = Station.get(params.id)
+            if (!station) {
                 jsonData = new JSONData(success: false)
                 render jsonData as JSON
                 return;
             } else {
-                def dataInfo = [success: true, data: requestMap]
+                def dataInfo = [success: true, data: station]
                 render dataInfo as JSON
                 return
             }
         } catch (Exception e) {
             jsonData = new JSONData(success: false)
         }
-
         render jsonData as JSON
     }
-
 
     /**
      * 查询封装
@@ -151,7 +153,6 @@ class RequestMapController {
             if (params?.bookName) {
                 ilike("bookName", "")
             }
-
         }
         return filter
     }

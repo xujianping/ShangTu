@@ -1,124 +1,146 @@
 <html>
 <head>
-	<meta name="layout" content="${gspLayout ?: 'main'}"/>
-	<title><g:message code='springSecurity.login.title'/></title>
-	<style type="text/css" media="screen">
-	#login {
-		margin: 15px 0px;
-		padding: 0px;
-		text-align: center;
-	}
+	<meta name="layout" content="ext"/>
+	<title><g:message code='sys.name'/></title>
+	<script type="text/javascript">
+        Ext.onReady(function () {
+            Ext.tip.QuickTipManager.init();
+            var loginForm = Ext.create('Ext.form.Panel', {
+                //collapsible : true,// 是否可以展开
+                height:130,
+                width:420,
+                frame:false,
+                style:'background:#fff;',
+                waitMsgTarget:true,
+                items:[
 
-	#login .inner {
-		width: 340px;
-		padding-bottom: 6px;
-		margin: 60px auto;
-		text-align: left;
-		border: 1px solid #aab;
-		background-color: #f0f0fa;
-		-moz-box-shadow: 2px 2px 2px #eee;
-		-webkit-box-shadow: 2px 2px 2px #eee;
-		-khtml-box-shadow: 2px 2px 2px #eee;
-		box-shadow: 2px 2px 2px #eee;
-	}
+                    {
+                        xtype:'textfield',
+                        id:'username',
+                        fieldLabel:'用户名',
+                        allowBlank:false,
+                        name:"${usernameParameter ?: 'username'}",
+                        minLength:4,
+                        width:260,
+                        x:70,
+                        y:30
+                    },
+                    {
+                        xtype:'textfield',
+                        fieldLabel:'密&nbsp;&nbsp;&nbsp;码',
+                        allowBlank:false,
+                        name:"${passwordParameter ?: 'password'}",
+                        id:'password',
+                        inputType: 'password',
+                        width:260,
+                        x:70,
+                        y:60,
+                        listeners:{
+                            specialkey:function (field, e) {
+                                if (e.getKey() == Ext.EventObject.ENTER) {
+                                    if (loginForm.form.isValid()) {
+                                        Ext.MessageBox.wait("登录中,稍后......");
+                                        var formValue = loginForm.form.getValues();
+                                        Ext.Ajax.request({
+                                            url:'${postUrl ?: '/login/authenticate'}',
+                                            method:'POST',
+                                            params:formValue,
+                                            success:function (r) {
+                                                Ext.MessageBox.hide();
+                                                var result = Ext.JSON.decode(r.responseText);
+                                                if (result.success == true) {
+                                                    window.location = '<g:createLink  controller="main"/>';
+                                                } else {
+                                                    Ext.MessageBox.show({title:'提示:', msg:'登录失败!' + result.alertMsg, width:300, buttons:Ext.MessageBox.OK, icon:Ext.MessageBox.ERROR});
+                                                }
+                                            },
+                                            failure:function (r) {
+                                                Ext.MessageBox.hide();
+                                                Ext.MessageBox.show({title:'提示:', msg:'连接服务器失败!', width:300, buttons:Ext.MessageBox.OK, icon:Ext.MessageBox.ERROR});
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            });
+            var win = Ext.create('Ext.window.Window', {
+                height:275,
+                width:433,
+                closable:false,
+                collapsible:false,
+                buttonAlign:'center',
+                style:'background:#fff;',
+                draggable:false,
+                resizable:false,
+                buttons:[
+                    {
+                        text:'登录',
+                        iconCls:'acceptIcon',
+                        handler:function () {
+                            if (loginForm.form.isValid()) {
+                                Ext.MessageBox.wait("登录中,稍后......");
+                                var formValue = loginForm.form.getValues();
+                                Ext.Ajax.request({
+                                    url:'${postUrl ?: '/login/authenticate'}',
+                                    method:'POST',
+                                    params:formValue,
+                                    success:function (r) {
+                                        Ext.MessageBox.hide();
+                                        var result = Ext.JSON.decode(r.responseText);
+                                        if (result.success == true) {
+                                            window.location = '<g:createLink  controller="main"/>';
+                                        } else {
+                                            Ext.MessageBox.show({title:'提示:', msg:'登录失败!' + result.alertMsg, width:300, buttons:Ext.MessageBox.OK, icon:Ext.MessageBox.ERROR});
+                                        }
+                                    },
+                                    failure:function (r) {
+                                        Ext.MessageBox.hide();
+                                        Ext.MessageBox.show({title:'提示:', msg:'连接服务器失败!', width:300, buttons:Ext.MessageBox.OK, icon:Ext.MessageBox.ERROR});
+                                    }
+                                });
+                            }
+                        }
+                    },
+                    {
+                        text:'重置',
+                        iconCls:'deleteIcon',
+                        handler:function(){
+                            loginForm.form.reset();
+                        }
+                    },
+                    {
+                        text:'语音安装',
+                        iconCls:'downloadIcon',
+                        handler:function () {
+                            window.open('<g:createLink  controller="login" action="download"/>')
+                            Ext.MessageBox.wait("正在下载,请稍后......");
+                            setTimeout("javascript:Ext.MessageBox.hide();", 3000);
 
-	#login .inner .fheader {
-		padding: 18px 26px 14px 26px;
-		background-color: #f7f7ff;
-		margin: 0px 0 14px 0;
-		color: #2e3741;
-		font-size: 18px;
-		font-weight: bold;
-	}
+                        }
+                    }
+                ],
+                title:'欢迎登录<g:message code="sys.name"/>',
 
-	#login .inner .cssform p {
-		clear: left;
-		margin: 0;
-		padding: 4px 0 3px 0;
-		padding-left: 105px;
-		margin-bottom: 20px;
-		height: 1%;
-	}
-
-	#login .inner .cssform input[type="text"] {
-		width: 120px;
-	}
-
-	#login .inner .cssform label {
-		font-weight: bold;
-		float: left;
-		text-align: right;
-		margin-left: -105px;
-		width: 110px;
-		padding-top: 3px;
-		padding-right: 10px;
-	}
-
-	#login #remember_me_holder {
-		padding-left: 120px;
-	}
-
-	#login #submit {
-		margin-left: 15px;
-	}
-
-	#login #remember_me_holder label {
-		float: none;
-		margin-left: 0;
-		text-align: left;
-		width: 200px
-	}
-
-	#login .inner .login_message {
-		padding: 6px 25px 20px 25px;
-		color: #c33;
-	}
-
-	#login .inner .text_ {
-		width: 120px;
-	}
-
-	#login .inner .chk {
-		height: 12px;
-	}
-	</style>
+                items:[
+                    {
+                        xtype:'container',
+                        height:80,
+                        style:'background:#fff;',
+                        html:'<img src="${resource(dir:'images',file:'logo.png')}" style="height:60px;margin:8px;">'
+                    },
+                    loginForm
+                ]
+            });
+            win.show();
+            Ext.getCmp('userNameId').focus(false, 150);
+        });
+	</script>
 </head>
 
 <body>
-<div id="login">
-	<div class="inner">
-		<div class="fheader"><g:message code='springSecurity.login.header'/></div>
-
-		<g:if test='${flash.message}'>
-			<div class="login_message">${flash.message}</div>
-		</g:if>
-
-		<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
-			<p>
-				<label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-				<input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
-			</p>
-
-			<p>
-				<label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
-				<input type="password" class="text_" name="${passwordParameter ?: 'password'}" id="password"/>
-			</p>
-
-			<p id="remember_me_holder">
-				<input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
-				<label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
-			</p>
-
-			<p>
-				<input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
-			</p>
-		</form>
-	</div>
-</div>
-<script>
-(function() {
-	document.forms['loginForm'].elements['${usernameParameter ?: 'username'}'].focus();
-})();
-</script>
+<div style="width: 100%;height: 100%;background-image:src ='${resource(dir:'images',file:'bg1.png')}'"></div>
 </body>
 </html>
